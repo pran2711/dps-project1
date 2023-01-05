@@ -1,0 +1,21 @@
+---
+ kind: Deployment
+ apiVersion: apps/v1
+ metadata:
+   name: deploysvc
+ spec:
+   replicas: 1
+   selector:
+     matchLabels:
+       myname: dsvc
+   template:
+     metadata:
+       name: svcpod
+       labels:
+         myname: dsvc
+     spec:
+       containers:
+         - name: container01
+           image: nginx
+           ports:
+           - containerPort: 8080   
